@@ -30,6 +30,17 @@ static constexpr uint32_t GRAPH_SLOT_SECONDS = 300;  ///< Length of one statisti
 static constexpr uint8_t GRAPH_HEIGHT = 180;     ///< Waveform height in pixels; values are sent as 0..GRAPH_HEIGHT-1
 static constexpr uint8_t GRAPH_BATCH_SIZE = 16;  ///< Points sent to the display per batch while drawing
 
+/// @brief Position of the waveform on screen, as designed in the HMI file of each orientation.
+struct GraphGeometry {
+  uint16_t x;  ///< Left edge of the waveform
+  uint16_t y;  ///< Top edge of the waveform
+};
+static constexpr GraphGeometry GRAPH_GEOMETRY_LANDSCAPE = {96, 100};  ///< EU and US Landscape models
+static constexpr GraphGeometry GRAPH_GEOMETRY_PORTRAIT = {16, 132};   ///< US Portrait model
+static constexpr uint8_t GRAPH_TICK_HOURS = 6;                        ///< Hours between two ticks on the time axis
+static constexpr uint8_t GRAPH_TICK_LENGTH = 4;         ///< Length of a tick below the time axis, in pixels
+static constexpr uint8_t GRAPH_AXIS_LABEL_HEIGHT = 20;  ///< Height of the hour labels below the ticks
+
 /// @brief Graph settings sent by the Blueprint when the page opens.
 struct GraphConfig {
   std::string title;     ///< Page title, usually the entity's friendly name
